@@ -13,5 +13,7 @@ class Person < ApplicationRecord
   # validate는 create, update, save 할떄 이루진다.
   # 또는 create!, update!, save! 이다.
   # new라는 것을 할떄는 validates를 지정했을때의 에러를 띄우지는 않는다. 물론 valid를 하면은 false를 리턴하겠지만 말이다.
+  # 그 이외에 여러가지가 있긴 한데, 이외의 메소드는 validate를 skip하니까 조심하도록 해야 한다.
+  # 또는 save(validate:false) 를 하게 되면은 validate를 하지 않는다는 특징이 있는데, 이런건 조심해서 써야한다.
   validates :name, presence: true
 end
