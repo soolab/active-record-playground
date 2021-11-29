@@ -29,4 +29,10 @@ class Library < ApplicationRecord
   # validates :length_check, length: { maximum: 2}
   # validates :length_check, length: { is: 6 }
   validates :length_check, length: { in: 6..20 }
+
+  # 이렇게 하면은 숫자를 넣지 않았을 때 model 단에서 에러가 나는 것이라고 생각하면 되는건가
+  # 근데 이렇게 일일히 numericality를 걸지는 않는 것 같다는 생각이 드는데
+  # 이 부분은 나중에 좀 체크를 해봐야겠다.
+  # validates :numaric_check, numericality: true
+  validates :numaric_check, numericality: { only_integer:  true }
 end
