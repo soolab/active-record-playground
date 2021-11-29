@@ -37,4 +37,13 @@ class Library < ApplicationRecord
   # 사실 이거보다는 :greater_than, equal_to, less_than 이러한 것들을 사용하려고
   # 이 validate를 하는 것으로 생각된다. 숫자 관련된 validate를 생각할 때는 이것을 떠올려보도록 하자.
   validates :numaric_check, numericality: { only_integer: true }
+
+  # 항상 존재해야 할 때 이것을 사용해야 한다고 생각하면 된다.
+  # 보통은 string일 때 사용하는 것 같긴 하다.
+  validates :account, presence: true
+
+  # inclusion과 exclusion은 이렇게 바로 사용할 수 도 있네.
+  # 이런건 참고하도록 하자.
+  # validates :account, inclusion: [true, false]
+  # validates :account, exclusion: [nil]
 end
