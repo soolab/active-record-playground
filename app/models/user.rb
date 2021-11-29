@@ -21,4 +21,8 @@ class User < ApplicationRecord
   # update는 간단하다. 일단 해당 Record를 읽어온다음에
   # setter를 통해서 변경한다. 그리고 save를 하면 되는 것임.
 
+  # delete도 간단하다.
+  # 방법은 몇개 있는데 일단 record를 읽어온다음에 해당 object에서 object.destroy를 하면 된다.
+  # 다른 방법은 find_by와 비슷하게 User.destroy_by(key: value)를 넣으면 된다.
+
 end
