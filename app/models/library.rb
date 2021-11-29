@@ -34,5 +34,7 @@ class Library < ApplicationRecord
   # 근데 이렇게 일일히 numericality를 걸지는 않는 것 같다는 생각이 드는데
   # 이 부분은 나중에 좀 체크를 해봐야겠다.
   # validates :numaric_check, numericality: true
-  validates :numaric_check, numericality: { only_integer:  true }
+  # 사실 이거보다는 :greater_than, equal_to, less_than 이러한 것들을 사용하려고
+  # 이 validate를 하는 것으로 생각된다. 숫자 관련된 validate를 생각할 때는 이것을 떠올려보도록 하자.
+  validates :numaric_check, numericality: { only_integer: true }
 end
