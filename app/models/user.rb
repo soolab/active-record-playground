@@ -17,4 +17,8 @@ class User < ApplicationRecord
   # find_by!를 하고 조건에 맞는 record를 찾지 못한다면은 error를 리턴하게 됨
   # ActiveRecord::RecordNotFound를 리턴한다는 것을 알아두도록 하자. 꼭 있어야 하는 것일때 이렇게 설정하면 좋을 것 같다.
   # 그나저나 find_by 와 where의 차이점은 무엇이란 말인가??
+
+  # update는 간단하다. 일단 해당 Record를 읽어온다음에
+  # setter를 통해서 변경한다. 그리고 save를 하면 되는 것임.
+
 end
