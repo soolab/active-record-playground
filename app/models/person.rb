@@ -26,4 +26,14 @@ class Person < ApplicationRecord
   # 이런식으로 사용법이 있는걸 보아서는 errors라는 것은 error의 array를 리턴한다고 생각하면 되고
   # 각각의 full_message를 볼때는 full_message를 사용한다고 생각하면 된다.
   validates :name, presence: true
+
+  # validate에는 :on, :message 라는 것을 무조건 추가 옵션으로 달 수 있는데
+  # :on 에는 :create, :update라는 것이 있다
+  # 해당 특정 method가 일어날 때만 이렇게 검출할 수 있도록 하는 방법이 있다는 것이다.
+  # 또한 message는 error message를 만들 때 이렇게 하라는 것임으로 알아두도록 한다.
+
+  # 무조건 true 여야 하는 것에는 acceptance를 사용하는 것이 좋다.
+  # validates: terms_of_service, acceptance: true 이렇게만 해도 상관 없긴 한데
+  # 특정 message를 error message 만들도록 수정한 것이다.
+  validates :terms_of_service, acceptance: { message: 'must be abided' }
 end
