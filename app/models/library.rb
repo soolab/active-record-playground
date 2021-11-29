@@ -23,4 +23,10 @@ class Library < ApplicationRecord
 
   # exclusion의 반대개념이라서 쉽게 이해할 수 있을 것이다.
   validates :name, inclusion: { in: %w(jinsoo jinhyun jinho), message: "%{value} is not a valid name"}
+
+  # 이런식으로 사용할 수 있다는 것 정도만 알아두면 될 것 같다. on이나 message 같은 것은 언제 어디서나 사용할 수 있으니까
+  # 사용하면 될 것 같다. 여기에서는 나타내지는 않았지만 말이다.
+  # validates :length_check, length: { maximum: 2}
+  # validates :length_check, length: { is: 6 }
+  validates :length_check, length: { in: 6..20 }
 end
