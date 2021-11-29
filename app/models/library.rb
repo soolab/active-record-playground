@@ -20,4 +20,7 @@ class Library < ApplicationRecord
   # 그럴 때 사용하는 것이 이 format 옵션이라고 생각하면 되고 문법은 이러하다 정도만 기억하면 될 것 같다.
   # Email을 validation을 할 때 썼던걸로 기억하고, 정규 표현식에 대해서 어느정도 알면 될 것 같다는 생각이 든다.
   validates :name, format: { with: /\A[a-zA-Z]+\z/, message: 'only allows letters' }
+
+  # exclusion의 반대개념이라서 쉽게 이해할 수 있을 것이다.
+  validates :name, inclusion: { in: %w(jinsoo jinhyun jinho), message: "%{value} is not a valid name"}
 end
