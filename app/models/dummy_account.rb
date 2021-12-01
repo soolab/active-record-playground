@@ -4,3 +4,5 @@ class DummyAccount < ApplicationRecord
   belongs_to :dummy_supply
   has_one :account_history
 end
+
+## save Assocation polymorphism 부터 시작하면 된다.
