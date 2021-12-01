@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_131009) do
+ActiveRecord::Schema.define(version: 2021_12_01_132612) do
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -38,6 +44,20 @@ ActiveRecord::Schema.define(version: 2021_12_01_131009) do
     t.string "surname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dummy_authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dummy_books", force: :cascade do |t|
+    t.string "name"
+    t.integer "author_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_id"], name: "index_dummy_books_on_author_id"
   end
 
   create_table "dummy_users", force: :cascade do |t|
@@ -104,5 +124,6 @@ ActiveRecord::Schema.define(version: 2021_12_01_131009) do
   end
 
   add_foreign_key "books", "libraries"
+  add_foreign_key "dummy_books", "authors"
   add_foreign_key "employees", "companies"
 end
