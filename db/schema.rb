@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_124501) do
+ActiveRecord::Schema.define(version: 2021_12_01_131009) do
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 2021_12_01_124501) do
     t.string "name"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "dummies", force: :cascade do |t|
     t.string "name"
     t.string "surname"
@@ -39,6 +45,14 @@ ActiveRecord::Schema.define(version: 2021_12_01_124501) do
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string "name"
+    t.integer "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_employees_on_company_id"
   end
 
   create_table "girls", force: :cascade do |t|
@@ -90,4 +104,5 @@ ActiveRecord::Schema.define(version: 2021_12_01_124501) do
   end
 
   add_foreign_key "books", "libraries"
+  add_foreign_key "employees", "companies"
 end
