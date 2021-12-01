@@ -16,3 +16,8 @@ end
 # 그럼 foreign_key는 어느쪽에 생성되는 것이지?
 # 아마 account에서 생성되는 것 같다. belongs_to를 사용하는 테이블에 foreign_key 가 생긴다고
 # 생각을 하면 쉬울 것 같다.
+
+# choosing between has_many , through and has_and_belongs_to_many
+# 이 두개의 차이점에 대해서 알아보도록 하자. 개인적으로는 has_many, through를 사용해야 한다고 이미 알고 있지만 말이다.
+# 여기서도 비슷한 말을 하고 있다 앵간해서는 through를 사용하도록 하자 관계 정보 외에 다른 정보도 넣을 수 있기 때문이다.
+# 뭐 이정도만 알면 될 듯. 이미 알고 있었더 내용이라서.
