@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_134839) do
+ActiveRecord::Schema.define(version: 2021_12_01_135548) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "physician_id", null: false
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(version: 2021_12_01_134839) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
     t.index ["physician_id"], name: "index_appointments_on_physician_id"
+  end
+
+  create_table "assemblies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "assembly_parts", force: :cascade do |t|
+    t.integer "assembly_id", null: false
+    t.integer "part_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["assembly_id"], name: "index_assembly_parts_on_assembly_id"
+    t.index ["part_id"], name: "index_assembly_parts_on_part_id"
   end
 
   create_table "authors", force: :cascade do |t|
@@ -113,6 +128,12 @@ ActiveRecord::Schema.define(version: 2021_12_01_134839) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "p_arts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -147,6 +168,8 @@ ActiveRecord::Schema.define(version: 2021_12_01_134839) do
 
   add_foreign_key "appointments", "patients"
   add_foreign_key "appointments", "physicians"
+  add_foreign_key "assembly_parts", "assemblies"
+  add_foreign_key "assembly_parts", "parts"
   add_foreign_key "books", "libraries"
   add_foreign_key "dummy_books", "authors"
   add_foreign_key "employees", "companies"
