@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_135548) do
+ActiveRecord::Schema.define(version: 2021_12_01_143012) do
+
+  create_table "account_histories", force: :cascade do |t|
+    t.integer "credit_rating"
+    t.integer "dummy_account_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dummy_account_id"], name: "index_account_histories_on_dummy_account_id"
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.integer "physician_id", null: false
@@ -71,6 +79,14 @@ ActiveRecord::Schema.define(version: 2021_12_01_135548) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "dummy_accounts", force: :cascade do |t|
+    t.string "account_number"
+    t.integer "dummy_supply_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dummy_supply_id"], name: "index_dummy_accounts_on_dummy_supply_id"
+  end
+
   create_table "dummy_authors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -83,6 +99,12 @@ ActiveRecord::Schema.define(version: 2021_12_01_135548) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_dummy_books_on_author_id"
+  end
+
+  create_table "dummy_supplies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "dummy_users", force: :cascade do |t|
@@ -166,11 +188,13 @@ ActiveRecord::Schema.define(version: 2021_12_01_135548) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "account_histories", "dummy_accounts"
   add_foreign_key "appointments", "patients"
   add_foreign_key "appointments", "physicians"
   add_foreign_key "assembly_parts", "assemblies"
   add_foreign_key "assembly_parts", "parts"
   add_foreign_key "books", "libraries"
+  add_foreign_key "dummy_accounts", "dummy_supplies"
   add_foreign_key "dummy_books", "authors"
   add_foreign_key "employees", "companies"
 end
