@@ -11,5 +11,11 @@ class School < ApplicationRecord
   # 그럼 잘 되는지 테스트를 해보자.
   # 잘 되네 이름이 'jinsoo' 인것만 잘 딸려오는 것을 확인했다.
   # 앞으로 이런 구문을 잘 이해할 수 있을 것으로 기대한다.
+
+  # 아 참고로, include, readonly, select 라는 것을 사용할 수 있다, where 대신에 말하는 것이다.
+  # include는 해당 student가 어떤 model과 관계를 맺고 있다고 할 때, 또한 그게 optional 일때 꼭 있는것만 가져올 경우라고 생각하면 될 듯.
+  # readonly는 가져온 students는 변경할 수 없다는 것인데, 이 조건은 변경하지 않을 경우 무조건 써주는게 코드 안정성을 높이는 것이라고 생각한다.
+  # select는 가져오는 칼럼을 정의할 수 있는데 기본적으로는 모든 student의 칼럼을 가져온다고 생각하면 된다.
+  # select 같은 경우에는 그닥 많이 쓸 것 같지는 않은데, 사용해야 할 경우를 잘 생각해서 사용하도록 하자.
   has_many :students, -> { where name: 'jinsoo'}
 end
