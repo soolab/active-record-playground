@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_03_133117) do
+ActiveRecord::Schema.define(version: 2021_12_03_140426) do
 
   create_table "account_histories", force: :cascade do |t|
     t.integer "credit_rating"
@@ -108,6 +108,20 @@ ActiveRecord::Schema.define(version: 2021_12_03_133117) do
     t.integer "manager_id"
   end
 
+  create_table "dummy_jinhos", force: :cascade do |t|
+    t.string "name"
+    t.integer "dummy_jinsoo_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dummy_jinsoo_id"], name: "index_dummy_jinhos_on_dummy_jinsoo_id"
+  end
+
+  create_table "dummy_jinsoos", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "dummy_supplies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -140,6 +154,14 @@ ActiveRecord::Schema.define(version: 2021_12_03_133117) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "jinhos", force: :cascade do |t|
+    t.string "name"
+    t.integer "jinsoo_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["jinsoo_id"], name: "index_jinhos_on_jinsoo_id"
   end
 
   create_table "libraries", force: :cascade do |t|
