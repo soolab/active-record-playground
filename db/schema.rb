@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_03_141124) do
+ActiveRecord::Schema.define(version: 2021_12_03_144109) do
 
   create_table "account_histories", force: :cascade do |t|
     t.integer "credit_rating"
@@ -101,6 +101,14 @@ ActiveRecord::Schema.define(version: 2021_12_03_141124) do
     t.index ["author_id"], name: "index_dummy_books_on_author_id"
   end
 
+  create_table "dummy_cans", force: :cascade do |t|
+    t.string "name"
+    t.integer "dummy_trash_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dummy_trash_id"], name: "index_dummy_cans_on_dummy_trash_id"
+  end
+
   create_table "dummy_employees", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -137,6 +145,12 @@ ActiveRecord::Schema.define(version: 2021_12_03_141124) do
   end
 
   create_table "dummy_supplies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dummy_trashes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -239,6 +253,7 @@ ActiveRecord::Schema.define(version: 2021_12_03_141124) do
   add_foreign_key "books", "libraries"
   add_foreign_key "dummy_accounts", "dummy_supplies"
   add_foreign_key "dummy_books", "authors"
+  add_foreign_key "dummy_cans", "dummy_trashes"
   add_foreign_key "dummy_lees", "dummy_kims"
   add_foreign_key "employees", "companies"
 end
