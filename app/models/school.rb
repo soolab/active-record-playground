@@ -19,3 +19,7 @@ class School < ApplicationRecord
   # select 같은 경우에는 그닥 많이 쓸 것 같지는 않은데, 사용해야 할 경우를 잘 생각해서 사용하도록 하자.
   has_many :students, -> { where name: 'jinsoo'}
 end
+
+# 일단은 기본적인 내용은 이렇게 되는 것 같다.
+# 프로젝트들을 보면서 모르는 내용은 찾아보도록 하고,
+# 나중에 더 깊게 볼 기회가 생기면 다시 업데이트를 하도록 하자.
