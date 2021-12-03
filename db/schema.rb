@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_143012) do
+ActiveRecord::Schema.define(version: 2021_12_03_133117) do
 
   create_table "account_histories", force: :cascade do |t|
     t.integer "credit_rating"
@@ -99,6 +99,13 @@ ActiveRecord::Schema.define(version: 2021_12_01_143012) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_id"], name: "index_dummy_books_on_author_id"
+  end
+
+  create_table "dummy_employees", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "manager_id"
   end
 
   create_table "dummy_supplies", force: :cascade do |t|
