@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_03_140426) do
+ActiveRecord::Schema.define(version: 2021_12_03_141124) do
 
   create_table "account_histories", force: :cascade do |t|
     t.integer "credit_rating"
@@ -122,6 +122,20 @@ ActiveRecord::Schema.define(version: 2021_12_03_140426) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "dummy_kims", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "dummy_lees", force: :cascade do |t|
+    t.string "name"
+    t.integer "dummy_kim_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dummy_kim_id"], name: "index_dummy_lees_on_dummy_kim_id"
+  end
+
   create_table "dummy_supplies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -225,5 +239,6 @@ ActiveRecord::Schema.define(version: 2021_12_03_140426) do
   add_foreign_key "books", "libraries"
   add_foreign_key "dummy_accounts", "dummy_supplies"
   add_foreign_key "dummy_books", "authors"
+  add_foreign_key "dummy_lees", "dummy_kims"
   add_foreign_key "employees", "companies"
 end

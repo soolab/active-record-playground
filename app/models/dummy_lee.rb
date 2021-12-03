@@ -1,0 +1,2 @@
+class DummyLee < ApplicationRecord
+end
